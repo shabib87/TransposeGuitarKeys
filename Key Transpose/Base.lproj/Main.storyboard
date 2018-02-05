@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Key_Transpose" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="C" borderStyle="roundedRect" placeholder="Select Chord" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BRN-L6-baK">
+                                <rect key="frame" x="20" y="40" width="335" height="36"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4le-PN-ttR">
+                                <rect key="frame" x="20" y="96" width="335" height="551"/>
+                                <string key="text">C
+Am
+F
+G
+Dm
+Em
+A#</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4le-PN-ttR" secondAttribute="trailing" constant="20" id="94X-zr-Wwm"/>
+                            <constraint firstItem="BRN-L6-baK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GtV-ba-Dj4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4le-PN-ttR" secondAttribute="bottom" constant="20" id="N3n-TF-dVJ"/>
+                            <constraint firstItem="BRN-L6-baK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Uc1-Wq-HOB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BRN-L6-baK" secondAttribute="trailing" constant="20" id="WJI-9s-W6E"/>
+                            <constraint firstItem="4le-PN-ttR" firstAttribute="top" secondItem="BRN-L6-baK" secondAttribute="bottom" constant="20" id="jve-E7-45L"/>
+                            <constraint firstItem="4le-PN-ttR" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qvv-Ai-yXJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="chordProgressionLabel" destination="4le-PN-ttR" id="bKv-C1-Zoy"/>
+                        <outlet property="majorField" destination="BRN-L6-baK" id="xjY-6k-Yof"/>
+                        <outlet property="majorFieldBar" destination="vdm-fN-ODQ" id="Eka-Ns-eUQ"/>
+                        <outlet property="majorKeyInputView" destination="jct-7t-IaT" id="2II-23-L3O"/>
+                        <outlet property="majorKeySwitch" destination="Vc4-YC-aK4" id="VC6-Xy-diO"/>
+                        <outlet property="majorPicker" destination="1GE-Rz-Fhl" id="sdL-Wh-nK1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="jct-7t-IaT">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GE-Rz-Fhl">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <connections>
+                                <outlet property="dataSource" destination="BYZ-38-t0r" id="Zt1-OY-piL"/>
+                                <outlet property="delegate" destination="BYZ-38-t0r" id="2ZV-wy-Kts"/>
+                            </connections>
+                        </pickerView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1GE-Rz-Fhl" secondAttribute="bottom" id="OGf-l9-nyA"/>
+                        <constraint firstAttribute="trailing" secondItem="1GE-Rz-Fhl" secondAttribute="trailing" id="SCb-RQ-ydO"/>
+                        <constraint firstItem="1GE-Rz-Fhl" firstAttribute="leading" secondItem="jct-7t-IaT" secondAttribute="leading" id="ZaI-ey-mH2"/>
+                        <constraint firstItem="1GE-Rz-Fhl" firstAttribute="top" secondItem="jct-7t-IaT" secondAttribute="top" id="myZ-Hd-ej0"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="eku-W4-JDQ"/>
+                </view>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="vdm-fN-ODQ">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Major Key" id="MlE-hJ-oRc"/>
+                        <barButtonItem style="plain" id="riT-dn-Id0">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="Vc4-YC-aK4">
+                                <rect key="frame" x="103" y="6.5" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="majroSwitchValueChangeAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="tFm-Vq-Ekw"/>
+                                </connections>
+                            </switch>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ayx-zx-6wI"/>
+                        <barButtonItem style="done" systemItem="done" id="brr-Bw-M8o">
+                            <connections>
+                                <action selector="doneAction:" destination="BYZ-38-t0r" id="qsw-sG-OYE"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </objects>
+        </scene>
+    </scenes>
+</document>
