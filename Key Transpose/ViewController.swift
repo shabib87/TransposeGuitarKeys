@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     fileprivate var selectedKeyIndex = 0
     
-    @IBOutlet private var majorField: UITextField!
+    @IBOutlet private var inputKeyField: UITextField!
     @IBOutlet private var majorPicker: UIPickerView!
     @IBOutlet private var majorKeyInputView: UIView!
     @IBOutlet private var majorFieldBar: UIToolbar!
@@ -24,9 +24,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        majorField.inputView = majorKeyInputView
-        majorField.inputAccessoryView = majorFieldBar
-        let keys = transposeNotesForMajorKey(key: "C", transposeBy: 0)
+        inputKeyField.inputView = majorKeyInputView
+        inputKeyField.inputAccessoryView = majorFieldBar
+        inputKeyField.text = "G"
+        let keys = transposeNotesForMajorKey(key: "G", transposeBy: 0)
         chordProgressionLabel.text = keys.joined(separator: "\n")
     }
     
@@ -41,9 +42,9 @@ class ViewController: UIViewController {
             key = allMinorKeys[keyIndex]
             keys = transposeNotesForMinorKey(key: key, transposeBy: 0)
         }
-        majorField.text = key
+        inputKeyField.text = key
         chordProgressionLabel.text = keys.joined(separator: "\n")
-        majorField.resignFirstResponder()
+        inputKeyField.resignFirstResponder()
     }
     
     @IBAction private func majroSwitchValueChangeAction(_: Any) {
@@ -53,47 +54,47 @@ class ViewController: UIViewController {
     private func transposeNotesForMinorKey(key: String, transposeBy step: Int) -> [String] {
         let index = allMinorKeys.index(of: key)!
         
-        // all major chords for a key are +1, +3, +8, +10 index of the key in major key array
-        let firstMajorOfCycle = rotatedIndexForIndex(index: (index + 1 + step))
-        let secondMajorOfCycle = rotatedIndexForIndex(index: (index + 3 + step))
-        let thirdMajorOfCycle = rotatedIndexForIndex(index: (index + 8 + step))
-        let fourthMajorOfCycle = rotatedIndexForIndex(index: (index + 10 + step))
+        // all major chords for a key are +1, +3, +8, +4 index of the key in major key array
+        let major1 = rotatedIndexForIndex(index: (index + 1 + step))
+        let major2 = rotatedIndexForIndex(index: (index + 3 + step))
+        let major3 = rotatedIndexForIndex(index: (index + 8 + step))
+        let major4 = rotatedIndexForIndex(index: (index + 4 + step))
         
         // all minor chords for a key are +5, +7 index of the key in major key array
-        let firstMinorOfCycle = rotatedIndexForIndex(index: (index + step))
-        let secondMinorOfCycle = rotatedIndexForIndex(index: (index + 5 + step))
-        let thirdMinorOfCycle = rotatedIndexForIndex(index: (index + 7 + step))
+        let minor1 = rotatedIndexForIndex(index: (index + step))
+        let minor2 = rotatedIndexForIndex(index: (index + 5 + step))
+        let minor3 = rotatedIndexForIndex(index: (index + 7 + step))
         
-        return [allMinorKeys[firstMinorOfCycle],
-                allMajorKeys[secondMajorOfCycle],
-                allMajorKeys[thirdMajorOfCycle],
-                allMajorKeys[fourthMajorOfCycle],
-                allMinorKeys[secondMinorOfCycle],
-                allMinorKeys[thirdMinorOfCycle],
-                allMajorKeys[firstMajorOfCycle]]
+        return [allMinorKeys[minor1],
+                allMajorKeys[major2],
+                allMajorKeys[major3],
+                allMajorKeys[major4],
+                allMinorKeys[minor2],
+                allMinorKeys[minor3],
+                allMajorKeys[major1]]
     }
     
     private func transposeNotesForMajorKey(key: String, transposeBy step: Int) -> [String] {
         let index = allMajorKeys.index(of: key)!
         
-        // all major chords for a key are -2(+10), +5, +7 index of the key in major key array
-        let firstMajorOfCycle = rotatedIndexForIndex(index: (index + step))
-        let secondMajorOfCycle = rotatedIndexForIndex(index: (index + 5 + step))
-        let thirdMajorOfCycle = rotatedIndexForIndex(index: (index + 7 + step))
-        let fourthMajorOfCycle = rotatedIndexForIndex(index: (index + 10 + step))
+        // all major chords for a key are +4, +5, +7 index of the key in major key array
+        let major1 = rotatedIndexForIndex(index: (index + step))
+        let major2 = rotatedIndexForIndex(index: (index + 5 + step))
+        let major3 = rotatedIndexForIndex(index: (index + 7 + step))
+        let major4 = rotatedIndexForIndex(index: (index + 4 + step))
         
         // all minor chords for a key are -3(+9), +2, +4 index of the key in major key array
-        let firstMinorOfCycle = rotatedIndexForIndex(index: (index + 9 + step))
-        let secondMinorOfCycle = rotatedIndexForIndex(index: (index + 2 + step))
-        let thirdMinorOfCycle = rotatedIndexForIndex(index: (index + 4 + step))
+        let minor1 = rotatedIndexForIndex(index: (index + 9 + step))
+        let minor2 = rotatedIndexForIndex(index: (index + 2 + step))
+        let minor3 = rotatedIndexForIndex(index: (index + 4 + step))
         
-        return [allMajorKeys[firstMajorOfCycle],
-                allMinorKeys[firstMinorOfCycle],
-                allMajorKeys[secondMajorOfCycle],
-                allMajorKeys[thirdMajorOfCycle],
-                allMinorKeys[secondMinorOfCycle],
-                allMinorKeys[thirdMinorOfCycle],
-                allMajorKeys[fourthMajorOfCycle]]
+        return [allMajorKeys[major1],
+                allMinorKeys[minor1],
+                allMajorKeys[major2],
+                allMajorKeys[major3],
+                allMinorKeys[minor2],
+                allMinorKeys[minor3],
+                allMajorKeys[major4]]
     }
     
     func rotatedIndexForIndex(index: Int) -> Int {

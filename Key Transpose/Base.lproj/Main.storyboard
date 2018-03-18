@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +31,7 @@ F
 G
 Dm
 Em
-A#</string>
+E</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,7 +51,7 @@ A#</string>
                     </view>
                     <connections>
                         <outlet property="chordProgressionLabel" destination="4le-PN-ttR" id="bKv-C1-Zoy"/>
-                        <outlet property="majorField" destination="BRN-L6-baK" id="xjY-6k-Yof"/>
+                        <outlet property="inputKeyField" destination="BRN-L6-baK" id="xjY-6k-Yof"/>
                         <outlet property="majorFieldBar" destination="vdm-fN-ODQ" id="Eka-Ns-eUQ"/>
                         <outlet property="majorKeyInputView" destination="jct-7t-IaT" id="2II-23-L3O"/>
                         <outlet property="majorKeySwitch" destination="Vc4-YC-aK4" id="VC6-Xy-diO"/>
