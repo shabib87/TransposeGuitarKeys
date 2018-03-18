@@ -54,11 +54,11 @@ class ViewController: UIViewController {
     private func transposeNotesForMinorKey(key: String, transposeBy step: Int) -> [String] {
         let index = allMinorKeys.index(of: key)!
         
-        // all major chords for a key are +1, +3, +8, +4 index of the key in major key array
-        let major1 = rotatedIndexForIndex(index: (index + 1 + step))
+        // all major chords for a key are -2(+10), +3, +8, -5(+7) index of the key in major key array
+        let major1 = rotatedIndexForIndex(index: (index + 10 + step))
         let major2 = rotatedIndexForIndex(index: (index + 3 + step))
         let major3 = rotatedIndexForIndex(index: (index + 8 + step))
-        let major4 = rotatedIndexForIndex(index: (index + 4 + step))
+        let major4 = rotatedIndexForIndex(index: (index + 7 + step))
         
         // all minor chords for a key are +5, +7 index of the key in major key array
         let minor1 = rotatedIndexForIndex(index: (index + step))
@@ -66,12 +66,12 @@ class ViewController: UIViewController {
         let minor3 = rotatedIndexForIndex(index: (index + 7 + step))
         
         return [allMinorKeys[minor1],
-                allMajorKeys[major2],
-                allMajorKeys[major3],
-                allMajorKeys[major4],
-                allMinorKeys[minor2],
                 allMinorKeys[minor3],
-                allMajorKeys[major1]]
+                allMajorKeys[major3],
+                allMajorKeys[major1],
+                allMajorKeys[major2],
+                allMinorKeys[minor2],
+                allMajorKeys[major4]]
     }
     
     private func transposeNotesForMajorKey(key: String, transposeBy step: Int) -> [String] {
